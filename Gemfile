@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'materialize-sass'
 
+gem 'slim-rails'
 gem 'dotenv-rails'
 
 group :development, :test do
