@@ -38,6 +38,11 @@ gem 'jbuilder', '~> 2.5'
 gem 'materialize-sass'
 
 gem 'slim-rails'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
 gem 'dotenv-rails'
 
 group :development, :test do
