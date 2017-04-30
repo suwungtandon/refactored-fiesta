@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title Kintai
+      = csrf_meta_tags
+
+      = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+      = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
+      = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %
+  body
+    nav
+      .nav-wrapper
+        a.brand-logo.u-ml_50 href="#"  Kintai
+        ul#nav-mobile.right.hide-on-med-and-down
+          - if current_user
+            li = current_user.email
+            li = link_to 'Sign out', destroy_user_session_path, method: :delete
+          - else
+            / li = link_to 'Sign up', new_user_registration_path
+            li = link_to 'Sign in with Google', user_google_omniauth_authorize_path
+    container
+      - if notice
+        .card-panel
+          p.green.accent-3
+            = notice
+      - if alert
+        .card-panel.red.darken-1
+          p.green.accent-3
+          = alert
+    
+    = yield
