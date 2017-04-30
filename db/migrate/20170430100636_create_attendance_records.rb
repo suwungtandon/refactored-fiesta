@@ -6,6 +6,8 @@ class CreateAttendanceRecords < ActiveRecord::Migration[5.0]
 
       t.time :break_time
 
+      t.belongs_to :user 
+
       t.timestamps
     end
   end
