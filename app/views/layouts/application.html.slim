@@ -2,11 +2,13 @@ doctype html
 html
   head
     title Kintai
-      = csrf_meta_tags
+    
+    = csrf_meta_tags
 
-      = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
-      = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
-      = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+  
   body
     nav
       .nav-wrapper
