@@ -5,29 +5,28 @@ html
     
     = csrf_meta_tags
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
     = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
+    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Baloo'
     = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
   
   body
-    nav
+    nav.brown.darken-2
       .nav-wrapper
         a.brand-logo.u-ml_50 href="#"  Kintai
         ul#nav-mobile.right.hide-on-med-and-down
           - if current_user
             li = current_user.email
-            li = link_to 'Sign out', destroy_user_session_path, method: :delete
+            li = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'waves-effect waves-teal btn-flat nav-button'
           - else
             / li = link_to 'Sign up', new_user_registration_path
-            li = link_to 'Sign in with Google', user_google_omniauth_authorize_path
-    container
-      - if notice
-        .card-panel
-          p.green.accent-3
-            = notice
-      - if alert
-        .card-panel.red.darken-1
-          p.green.accent-3
-          = alert
+            li = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'waves-effect waves-teal btn-flat nav-button'
+    / .container.red.lighten-2
+    /   - if notice
+    /     .card-panel.purple.lighten-3
+    /       p = notice
+    /   - if alert
+    /     .card-panel.purple.lighten-3
+    /       p = alert
     
     = yield
