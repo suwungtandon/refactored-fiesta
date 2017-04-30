@@ -1,8 +1,21 @@
+.halign-wrapper.valign-wrapper.red.lighten-2[style="height: 400px"]
+  .waiting-for-action-area.halign-wrapper[style="flex-direction: column"]
+    .time-area.u-mb_20 Work now !
+    button.start-button.waves-effect.waves-light.btn-large.red.lighten-3 Start
 
-.container
-  div.center-align
-    button.waves-effect.waves-light.btn-large.u-mt_50.pink Start
-  
+  .couting-area.center-align[style="display: none; width: 100%"]
+    .time-area.u-mb_20.row
+      .work-time.col.m3.offset-m3 = '00:00:00'
+      .break-time.col.m3 = '(00:00:00)'
+    button.pause-button.waves-effect.waves-light.btn-large.u-mr_100.deep-orange.lighten-2[style="width: 200px"] Pause
+    button.stop-button.waves-effect.waves-light.btn-large.red.lighten-1[style="width: 200px"] Stop
+    
+    = form_tag attendance_records_path, id: 'attendance-record-form', method: :create do
+      = hidden_field_tag 'start_time', Time.now
+      = hidden_field_tag 'break_time', '0:00:00'
+      = hidden_field_tag 'end_time', ''
+    
+.container.u-pt_40
   h3 Records
   
   table.highlight

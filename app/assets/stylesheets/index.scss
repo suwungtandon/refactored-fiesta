@@ -4,3 +4,13 @@
 
 @import 'materialize/components/color';
 @import 'materialize';
+
+.time-area {
+  font-family: 'Baloo', cursive;
+  font-size: 80px;
+  color: #ffebee;
+
+  .work-time, .break-time {
+    text-align: left;
+  }
+}
