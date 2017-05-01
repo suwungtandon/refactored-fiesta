@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430100636) do
+ActiveRecord::Schema.define(version: 20170430142926) do
 
   create_table "attendance_records", force: :cascade do |t|
     t.datetime "start_time"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170430100636) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "memo"
     t.index ["user_id"], name: "index_attendance_records_on_user_id"
   end
 
