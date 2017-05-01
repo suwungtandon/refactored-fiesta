@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [ :google ]
 
-  has_many :attendance_records
+  has_many :attendance_records, dependent: :destroy
 
   protected
   def self.find_for_google(auth)

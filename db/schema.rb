@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430142926) do
+ActiveRecord::Schema.define(version: 20170501065732) do
 
   create_table "attendance_records", force: :cascade do |t|
     t.datetime "start_time"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170430142926) do
     t.string   "uid"
     t.string   "meta"
     t.string   "token"
+    t.integer  "hourly_wage"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
