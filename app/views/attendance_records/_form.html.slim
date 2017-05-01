@@ -1,0 +1,21 @@
+= form_for @attendance_record do |f|
+  - if @attendance_record.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@attendance_record.errors.count, "error")} prohibited this attendance_record from being saved:"
+      ul
+        - @attendance_record.errors.full_messages.each do |message|
+          li = message
+  
+  label Start time
+  = f.datetime_select :start_time
+  
+  label End time
+  = f.datetime_select :end_time
+  
+  label Break time
+  = f.time_select :break_time
+  
+  label Memo
+  = f.text_area :memo
+  
+  .actions = f.submit
