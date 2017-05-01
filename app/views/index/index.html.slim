@@ -10,7 +10,7 @@
     button.pause-button.waves-effect.waves-light.btn-large.u-mr_100.deep-orange.lighten-2[style="width: 200px"] Pause
     button.stop-button.waves-effect.waves-light.btn-large.red.lighten-1[style="width: 200px"] Stop
     
-    = form_tag attendance_records_new_path, id: 'attendance-record-form', method: :create do
+    = form_tag attendance_records_new_path, id: 'attendance-record-form', method: :post, authenticity_token: true do
       = hidden_field_tag 'attendance_record[start_time]', Time.now
       = hidden_field_tag 'attendance_record[break_time]', '0'
       = hidden_field_tag 'attendance_record[end_time]', Time.now
@@ -35,3 +35,20 @@
           td
             = link_to 'Edit', edit_attendance_record_path(attendance_record), class: 'waves-effect waves-teal btn-flat'
             = link_to 'Delete', attendance_record_path(attendance_record), method: 'delete', class: 'waves-effect waves-teal btn-flat'
+
+  h3 Report
+  - if current_user.try!(:hourly_wage)
+    .row
+      .input-field.col.m4
+        input[type="text" value="#{formatted_duration(total_working_time(@attendance_records))}"]
+        label.active Total time
+      
+      .input-field.col.m4
+        input#hourly-wage[type="text" value="#{current_user.hourly_wage}"]
+        label.active Hourly wage
+        
+      .input-field.col.m4
+        input#monthly-salary[type="text" value="#{total_working_time(@attendance_records) / 60 / 60 * current_user.hourly_wage}"]
+        label.active Monthly salary (calculated automatically)
+  - else
+    p Nothing to show
