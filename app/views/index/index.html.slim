@@ -27,28 +27,11 @@
         th Actions
     
     tbody
-      tr
-        td May 25, 2017
-        td 10:00-18:00 (2:00)
-        td 6:00
-        td [edit] [delete]
-      tr
-        td May 25, 2017
-        td 10:00-18:00 (2:00)
-        td 6:00
-        td [edit] [delete]
-      tr
-        td May 25, 2017
-        td 10:00-18:00 (2:00)
-        td 6:00
-        td [edit] [delete]
-      tr
-        td May 25, 2017
-        td 10:00-18:00 (2:00)
-        td 6:00
-        td [edit] [delete]
-      tr
-        td May 25, 2017
-        td 10:00-18:00 (2:00)
-        td 6:00
-        td [edit] [delete]
+      - @attendance_records.each do |attendance_record|
+        tr
+          td = attendance_record.start_time.strftime('%B %d, %Y')
+          td = formatted_time_with_break_time(attendance_record)
+          td = formatted_duration(attendance_record.end_time - attendance_record.start_time - attendance_record.break_time)
+          td
+            = link_to 'Edit', edit_attendance_record_path(attendance_record), class: 'waves-effect waves-teal btn-flat'
+            = link_to 'Delete', attendance_record_path(attendance_record), method: 'delete', class: 'waves-effect waves-teal btn-flat'
