@@ -5,12 +5,15 @@
 @import 'materialize/components/color';
 @import 'materialize';
 
+$mild-white: #ffebee;
+
 .time-area {
+  color: $mild-white;
   font-family: 'Baloo', cursive;
   font-size: 80px;
-  color: #ffebee;
 
-  .work-time, .break-time {
+  .work-time,
+  .break-time {
     text-align: left;
   }
 }
