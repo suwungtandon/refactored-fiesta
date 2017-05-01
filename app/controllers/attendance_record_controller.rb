@@ -1,2 +1,0 @@
-class AttendanceRecordController < ApplicationController
-end
