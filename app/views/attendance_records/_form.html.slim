@@ -6,16 +6,21 @@
         - @attendance_record.errors.full_messages.each do |message|
           li = message
   
-  label Start time
-  = f.datetime_select :start_time
+  .input-field
+    input#start-time[type="text" value="#{@attendance_record.start_time}" name="attendance_record[start_time]"]
+    label.active[for="start-time"] Start time
   
-  label End time
-  = f.datetime_select :end_time
+  .input-field
+    input#end-time[type="text" value="#{@attendance_record.end_time}" name="attendance_record[end_time]"]
+    label.active[for="end-time"] End time
   
-  label Break time
-  = f.time_select :break_time
+  .input-field
+    input#break-time[type="text" value="#{formatted_duration(@attendance_record.break_time)}" name="attendance_record[break_time]"]
+    label.active[for="break-time"] Break time
   
-  label Memo
-  = f.text_area :memo
+  .input-field
+    = f.text_area :memo, default: @attendance_record.memo, class: 'materialize-textarea'
+    label Memo
   
-  .actions = f.submit
+  .input-field
+    = f.submit 'Create new record !', class: 'waves-effect waves-light btn'
