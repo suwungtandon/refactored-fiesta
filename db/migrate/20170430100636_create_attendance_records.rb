@@ -4,9 +4,9 @@ class CreateAttendanceRecords < ActiveRecord::Migration[5.0]
       t.datetime :start_time
       t.datetime :end_time
 
-      t.time :break_time
+      t.integer :break_time
 
-      t.belongs_to :user 
+      t.belongs_to :user
 
       t.timestamps
     end

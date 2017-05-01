@@ -15,15 +15,18 @@ $ ->
     $('title').text('Working 🏃')
 
     setInterval ->
-      $('#end_time').val(moment().format())
+      $('#attendance_record_end_time').val(moment().format())
 
       if isWorking
         next = moment.duration($('.work-time').text()).add(1, 'seconds')
         $('.work-time').text(formatMomentDuration(next))
       else
+        # formatted text
         next = moment.duration($('.break-time').text().slice(2, 10)).add(1, 'seconds')
         $('.break-time').text(" (#{formatMomentDuration(next)})")
-        $('#break_time').val(formatMomentDuration(next))
+
+        # raw value
+        $('#attendance_record_break_time').val(Number($('#attendance_record_break_time').val()) + 1)
     , 1000
 
   $(document).on 'click', '.stop-button', ->

@@ -12,7 +12,7 @@
     
     = form_tag attendance_records_new_path, id: 'attendance-record-form', method: :create do
       = hidden_field_tag 'attendance_record[start_time]', Time.now
-      = hidden_field_tag 'attendance_record[break_time]', '0:00:00'
+      = hidden_field_tag 'attendance_record[break_time]', '0'
       = hidden_field_tag 'attendance_record[end_time]', Time.now
     
 .container.u-pt_40

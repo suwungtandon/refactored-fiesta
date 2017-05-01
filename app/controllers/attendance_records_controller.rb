@@ -6,7 +6,10 @@ class AttendanceRecordsController < ApplicationController
   end
 
   def create
-    AttendanceRecord.create(attendance_record_params.merge({ user: current_user }))
+    prms = attendance_record_params.merge({ user: current_user })
+    prms[:break_time] = parse_time_to_duration(prms[:break_time])
+
+    AttendanceRecord.create(prms)
 
     # flash note
 
@@ -36,5 +39,13 @@ class AttendanceRecordsController < ApplicationController
   private
   def attendance_record_params
     params.require('attendance_record').permit(:start_time, :end_time, :break_time, :memo)
+  end
+
+  def parse_time_to_duration(dtime)
+    ret = dtime.match /^(\d+):(\d+):(\d+)$/
+
+    raise 'Fucking format' unless ret.size == 4
+
+    (ret[1].to_i.hours + ret[2].to_i.minutes + ret[3].to_i.seconds).to_i
   end
 end

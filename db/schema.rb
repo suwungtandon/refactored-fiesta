@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170430142926) do
   create_table "attendance_records", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.time     "break_time"
+    t.integer  "break_time"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
