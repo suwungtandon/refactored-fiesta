@@ -35,7 +35,7 @@
           td[nowrap] = formatted_duration(attendance_record.end_time - attendance_record.start_time - attendance_record.break_time)
           td = attendance_record.memo
           td[nowrap]
-            = link_to 'Edit', edit_attendance_record_path(attendance_record), class: 'waves-effect waves-red btn-flat'
+            = link_to 'Edit', edit_attendance_record_path(attendance_record), class: 'waves-effect waves btn-flat'
             = link_to 'Delete', attendance_record_path(attendance_record), method: 'delete', class: 'waves-effect waves-red btn-flat'
 
   h3 Report
