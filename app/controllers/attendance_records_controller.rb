@@ -21,7 +21,9 @@ class AttendanceRecordsController < ApplicationController
   end
 
   def update
-    AttendanceRecord.update_attributes!(attendance_record_params)
+    @attendance_record = AttendanceRecord.find(params[:id])
+
+    @attendance_record.update_attributes!(attendance_record_params)
 
     # flash note
     redirect_to controller: :index, action: :index
