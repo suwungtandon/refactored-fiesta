@@ -1,7 +1,9 @@
 doctype html
 html
   head
-    title Kintai
+    title Knt-i
+    
+    = favicon_link_tag
     
     = csrf_meta_tags
 
@@ -13,7 +15,7 @@ html
   body
     nav.brown.darken-2
       .nav-wrapper
-        a.brand-logo.u-ml_50 href="#{root_path}"  Kintai
+        a.brand-logo.u-ml_50 href="#{root_path}"  Knt-i
         ul#nav-mobile.right.hide-on-med-and-down
           - if current_user
             li = current_user.email
