@@ -1,18 +1,15 @@
 doctype html
 html
-  head
-    title Knt-i
-    
-    = favicon_link_tag
-    
-    = csrf_meta_tags
-
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload'
-    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
-    = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Baloo'
-    = javascript_include_tag 'application', 'data-turbolinks-track' => 'reload'
+  = render partial: '/layouts/head'
   
   body
+    - if notice
+      javascript:
+        Materialize.toast("#{ notice }", 4000)
+    - if alert
+      javascript:
+        Materialize.toast("#{ alert }", 4000)
+
     nav.brown.darken-2
       .nav-wrapper
         a.brand-logo.u-ml_50 href="#{root_path}"  Knt-i
@@ -24,16 +21,9 @@ html
             / li = link_to 'Sign up', new_user_registration_path
             li = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'waves-effect waves btn-flat nav-button', id: 'login-button'
     
-    - if notice
-      javascript:
-        Materialize.toast("#{ notice }", 4000)
-    - if alert
-      javascript:
-        Materialize.toast("#{ alert }", 4000)
-    
     main = yield
     
-    footer.page-footer.u-pt_0
+    footer.page-footer.u-pt_0.u-mt_20
       .footer-copyright
         .container
           span © 2017 Hiroaki KARASAWA

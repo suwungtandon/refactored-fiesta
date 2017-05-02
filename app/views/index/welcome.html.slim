@@ -1,0 +1,25 @@
+css:
+  #login-button {
+    background-color: #f3989b;
+    width: 260px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+
+html
+  = render partial: '/layouts/head'
+  
+  body.red.lighten-2.white-text
+    main
+      .section
+        .container.halign-wrapper[style="flex-direction: column; height: 80vh"]
+          .row.center
+            h1 Kint-i
+          .row.center
+            h4 A modern managing working time tool
+          .row.center = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'btn-large waves-effect waves-light', id: 'login-button'
+
+      
