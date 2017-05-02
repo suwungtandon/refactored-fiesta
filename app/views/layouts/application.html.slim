@@ -22,7 +22,7 @@ html
             li = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'waves-effect waves btn-flat nav-button'
           - else
             / li = link_to 'Sign up', new_user_registration_path
-            li = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'waves-effect waves btn-flat nav-button'
+            li = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'waves-effect waves btn-flat nav-button', id: 'login-button'
     
     - if notice
       javascript:
