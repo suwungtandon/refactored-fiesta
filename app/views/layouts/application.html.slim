@@ -19,10 +19,10 @@ html
         ul#nav-mobile.right.hide-on-med-and-down
           - if current_user
             li = current_user.email
-            li = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'waves-effect waves-teal btn-flat nav-button'
+            li = link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'waves-effect waves btn-flat nav-button'
           - else
             / li = link_to 'Sign up', new_user_registration_path
-            li = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'waves-effect waves-teal btn-flat nav-button'
+            li = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'waves-effect waves btn-flat nav-button'
     
     - if notice
       javascript:
