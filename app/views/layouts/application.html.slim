@@ -23,13 +23,13 @@ html
           - else
             / li = link_to 'Sign up', new_user_registration_path
             li = link_to 'Sign in with Google', user_google_omniauth_authorize_path, class: 'waves-effect waves-teal btn-flat nav-button'
-    / .container.red.lighten-2
-    /   - if notice
-    /     .card-panel.purple.lighten-3
-    /       p = notice
-    /   - if alert
-    /     .card-panel.purple.lighten-3
-    /       p = alert
+    
+    - if notice
+      javascript:
+        Materialize.toast("#{ notice }", 4000)
+    - if alert
+      javascript:
+        Materialize.toast("#{ alert }", 4000)
     
     main = yield
     
