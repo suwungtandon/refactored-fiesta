@@ -24,5 +24,6 @@ production:
   <<: *default
   database: db/production.postgresql
   adapter: postgresql
+  host: <%= DATABASE_URL =>
   encoding: unicode
   pool: 5
