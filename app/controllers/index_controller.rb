@@ -5,9 +5,18 @@ class IndexController < ApplicationController
       return
     end
 
-    target_date = params[:target_date] || Time.now
-    beginning_of_month = target_date.beginning_of_month
-    end_of_month = target_date.end_of_month
+    first_record = AttendanceRecord.where(user: current_user).first.start_time.to_date
+    last_record = AttendanceRecord.where(user: current_user).last.start_time.to_date
+
+    @candidate_months = (first_record .. last_record).map(&:beginning_of_month).uniq
+
+    year = (params[:year] || Time.now.year).to_i
+    month = (params[:month] || Time.now.month).to_i
+
+    @target_month = Date.new(year, month, 1)
+
+    beginning_of_month = @target_month.beginning_of_month
+    end_of_month = @target_month.end_of_month
 
     @attendance_records = AttendanceRecord.where(user: current_user, start_time: beginning_of_month .. end_of_month)
   end
