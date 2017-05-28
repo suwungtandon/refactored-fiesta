@@ -46,6 +46,17 @@ class AttendanceRecordsController < ApplicationController
     redirect_to controller: :index, action: :index
   end
 
+  def download
+    target_month = Date.new(params[:year].to_i, params[:month].to_i, 1)
+
+    beginning_of_month = target_month.beginning_of_month
+    end_of_month = target_month.end_of_month
+
+    @attendance_records = AttendanceRecord.where(user: current_user, start_time: beginning_of_month .. end_of_month)
+
+    render content_type: 'text/csv'
+  end
+
   private
   def attendance_record_params
     params.require('attendance_record').permit(:start_time, :end_time, :break_time, :memo)
