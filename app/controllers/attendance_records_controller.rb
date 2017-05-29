@@ -63,10 +63,10 @@ class AttendanceRecordsController < ApplicationController
   end
 
   def parse_time_to_duration(dtime)
-    ret = dtime.match(/^(\d+):(\d+):(\d+)$/)
+    ret = dtime.match(/^(\d+):(\d+)$/)
 
-    raise 'Fucking format' unless ret.size == 4
+    raise 'Fucking format' unless ret.size == 3
 
-    (ret[1].to_i.hours + ret[2].to_i.minutes + ret[3].to_i.seconds).to_i
+    (ret[1].to_i.hours + ret[2].to_i.minutes).to_i
   end
 end
