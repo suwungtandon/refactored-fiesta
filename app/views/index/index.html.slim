@@ -39,24 +39,25 @@
               = link_to 'Edit', edit_attendance_record_path(attendance_record), class: 'waves-effect waves btn-flat'
               = link_to 'Delete', attendance_record_path(attendance_record), method: 'delete', class: 'waves-effect waves-red btn-flat'
     
-    ul.pagination
-      - prev_month = @target_month - 1.month
-      - next_month = @target_month + 1.month
-      - has_prev_month = @target_month != @candidate_months.first
-      - has_next_month = @target_month != @candidate_months.last
-      
-      li[class="#{has_prev_month ? '' : 'disabled'}"]
-        a[href="#{has_prev_month ? "/?year=#{prev_month.year}&month=#{prev_month.month}" : "/"}"]
-          i.material-icons chevron_left
+    - if @target_month.present? && @candidate_months.present?
+      ul.pagination
+        - prev_month = @target_month - 1.month
+        - next_month = @target_month + 1.month
+        - has_prev_month = @target_month != @candidate_months.first
+        - has_next_month = @target_month != @candidate_months.last
         
-      - @candidate_months.each do |month|
-        - klass = month ==  @target_month ? 'active' : ''
-        li.waves-effect[class="#{klass}"]
-          a[href="/?year=#{month.year}&month=#{month.month}"] = month.strftime('%Y/%-m')
+        li[class="#{has_prev_month ? '' : 'disabled'}"]
+          a[href="#{has_prev_month ? "/?year=#{prev_month.year}&month=#{prev_month.month}" : "/"}"]
+            i.material-icons chevron_left
           
-      li[class="#{has_next_month ? '' : 'disabled'}"]
-        a[href="#{has_next_month ? "/?year=#{next_month.year}&month=#{next_month.month}" : "/"}"]
-          i.material-icons chevron_right
+        - @candidate_months.each do |month|
+          - klass = month ==  @target_month ? 'active' : ''
+          li.waves-effect[class="#{klass}"]
+            a[href="/?year=#{month.year}&month=#{month.month}"] = month.strftime('%Y/%-m')
+            
+        li[class="#{has_next_month ? '' : 'disabled'}"]
+          a[href="#{has_next_month ? "/?year=#{next_month.year}&month=#{next_month.month}" : "/"}"]
+            i.material-icons chevron_right
 
   section.section
     h4 Report
